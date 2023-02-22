@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class pulsar : MonoBehaviour
+public class Pulsar : MonoBehaviour
 {
     //public Button bnt;
     private Button btn;
