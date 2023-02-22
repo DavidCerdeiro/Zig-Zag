@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movimiento : MonoBehaviour
 {
     public Camera camara;
-    private int velocidad;
+    private int velocidad = 1;
     private Vector3 offset;
     private float valZ;
     private float valX;
