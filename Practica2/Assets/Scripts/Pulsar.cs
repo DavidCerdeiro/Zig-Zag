@@ -13,6 +13,7 @@ public class Pulsar : MonoBehaviour
     private int numero;
     public Sprite[] spNumeros;
     public Text texto;
+    public AudioSource countdown;
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Pulsar : MonoBehaviour
         texto.gameObject.SetActive(true);
         btn.gameObject.SetActive(false);
         contar = true;
+        countdown.Play();
     }
 
     // Update is called once per frame
