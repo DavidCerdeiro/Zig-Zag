@@ -32,6 +32,6 @@ public class Movimiento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        camara.transform.position = this.transform.position + offset;
     }
 }
