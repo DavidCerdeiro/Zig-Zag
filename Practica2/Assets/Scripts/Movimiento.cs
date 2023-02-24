@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movimiento : MonoBehaviour
 {
+    public Image img;
     public Camera camara;
     private int velocidad;
     private Vector3 offset;
@@ -12,6 +14,10 @@ public class Movimiento : MonoBehaviour
     private Rigidbody rb;
     private float limite;
     public GameObject prefabSuelo;
+    public GameObject prefabPincho;
+    public Sprite muerte;
+    public AudioSource morir;
+    private bool aumentar;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +26,7 @@ public class Movimiento : MonoBehaviour
         valX = 0.0f;
         valZ = 0.0f;
         SueloInicial();
+        Pincho();
         limite = this.transform.position.x;
         rb = GetComponent<Rigidbody>();
     }
@@ -33,7 +40,24 @@ public class Movimiento : MonoBehaviour
             GameObject elsuelo = Instantiate(prefabSuelo, position, Quaternion.identity) as GameObject;
         }
     }
+    void Pincho(){
+        for(int n = 0; n<10; n++){
+            valX += 6.0f;
+            //valZ += 6.0f;
+            Vector3 position = new Vector3(valX, 0.09f, Random.Range((valZ-6), (valZ+4)));
+            GameObject elPincho = Instantiate(prefabPincho, position, Quaternion.identity) as GameObject;
+        }
+    }
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("pincho")){
+            Debug.Log("Jugador ha muerto por pincho");
+            Destroy(this.gameObject);
+            img.gameObject.SetActive(true);
+            img.sprite = muerte;
+            morir.Play();
+        }
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -55,14 +79,31 @@ public class Movimiento : MonoBehaviour
         limite = valX - this.transform.position.x;          //diferencia entre ultima plataforma generada y posicion del jugador
         if (limite < 40)
         {
-            Debug.Log("Nueva generacion de plataforma");    //temporal para saber que se generan nuevas plataformas
+            Debug.Log("Nueva generacion de plataforma"); //temporal para saber que se generan nuevas plataformas
             SueloInicial();
+            Pincho();
         }
 
         if (transform.position.y < -2)
         {
-            Debug.Log("Jugador ha muerto");
+            Debug.Log("Jugador ha muerto por caida");
             Destroy(this.gameObject);
+            img.gameObject.SetActive(true);
+            img.sprite = muerte;
+            morir.Play();
+
         }
+        if(aumentar){
+            velocidad++;
+            Debug.Log("Velocidad aumentada");
+        }
+        StartCoroutine(Esperar());
+        aumentar = false;
+    }
+    IEnumerator Esperar()
+    {
+        yield return new WaitForSeconds(5);
+        aumentar = true;
+
     }
 }

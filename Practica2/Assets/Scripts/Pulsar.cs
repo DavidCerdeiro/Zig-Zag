@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Pulsar : MonoBehaviour
 {
-    //public Button bnt;
     private Button btn;
     public Image img;
     private bool contar;

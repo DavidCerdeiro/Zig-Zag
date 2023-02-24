@@ -9,6 +9,8 @@ TagManager:
   - boton
   - Musica
   - fx
+  - pincho
+  - rampa
   layers:
   - Default
   - TransparentFX
