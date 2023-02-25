@@ -37,11 +37,12 @@ public class Movimiento : MonoBehaviour
     void SueloInicial(){
         
         for(int n = 0; n<10; n++){
+            Monedas();
             valX += 6.0f;
             //valZ += 6.0f;
             Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-6), (valZ+4)));
             GameObject elsuelo = Instantiate(prefabSuelo, position, Quaternion.identity) as GameObject;
-            //Monedas();
+            
         }
     }
     void Pincho(){
@@ -54,12 +55,8 @@ public class Movimiento : MonoBehaviour
     }
 
     void Monedas(){
-        for(int n = 0; n<10; n++){
-            valX += 6.0f;
-            //valZ += 6.0f;
             Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-6), (valZ+4)));
             GameObject laMoneda = Instantiate(patronMoneda, position, Quaternion.identity) as GameObject;
-        }
     }
 
     private void OnTriggerEnter(Collider other) {
