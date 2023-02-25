@@ -15,6 +15,8 @@ public class Movimiento : MonoBehaviour
     private float limite;
     public GameObject prefabSuelo;
     public GameObject prefabPincho;
+    public GameObject patronMoneda;
+    public GameObject patronMoneda2;
     public Sprite muerte;
     public AudioSource morir;
     private bool aumentar;
@@ -27,6 +29,7 @@ public class Movimiento : MonoBehaviour
         valZ = 0.0f;
         SueloInicial();
         Pincho();
+        //Monedas();
         limite = this.transform.position.x;
         rb = GetComponent<Rigidbody>();
     }
@@ -38,6 +41,7 @@ public class Movimiento : MonoBehaviour
             //valZ += 6.0f;
             Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-6), (valZ+4)));
             GameObject elsuelo = Instantiate(prefabSuelo, position, Quaternion.identity) as GameObject;
+            //Monedas();
         }
     }
     void Pincho(){
@@ -48,6 +52,16 @@ public class Movimiento : MonoBehaviour
             GameObject elPincho = Instantiate(prefabPincho, position, Quaternion.identity) as GameObject;
         }
     }
+
+    void Monedas(){
+        for(int n = 0; n<10; n++){
+            valX += 6.0f;
+            //valZ += 6.0f;
+            Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-6), (valZ+4)));
+            GameObject laMoneda = Instantiate(patronMoneda, position, Quaternion.identity) as GameObject;
+        }
+    }
+
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("pincho")){
             Debug.Log("Jugador ha muerto por pincho");
