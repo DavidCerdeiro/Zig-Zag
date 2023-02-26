@@ -20,6 +20,7 @@ public class Movimiento : MonoBehaviour
     public Sprite muerte;
     public AudioSource morir;
     private bool aumentar;
+    private float avance;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,22 +33,22 @@ public class Movimiento : MonoBehaviour
         //Monedas();
         limite = this.transform.position.x;
         rb = GetComponent<Rigidbody>();
+        avance = 1.6f;
     }
 
     void SueloInicial(){
         
-        for(int n = 0; n<10; n++){
+        for(int n = 0; n<20; n++){
             Monedas();
             valX += 6.0f;
             //valZ += 6.0f;
-            Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-6), (valZ+4)));
+            Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-4), (valZ+4)));
             GameObject elsuelo = Instantiate(prefabSuelo, position, Quaternion.identity) as GameObject;
-            
         }
     }
     void Pincho(){
         for(int n = 0; n<10; n++){
-            valX += 6.0f;
+            //valX += 6.0f;
             //valZ += 6.0f;
             Vector3 position = new Vector3(valX, 0.09f, Random.Range((valZ-6), (valZ+4)));
             GameObject elPincho = Instantiate(prefabPincho, position, Quaternion.identity) as GameObject;
@@ -55,7 +56,7 @@ public class Movimiento : MonoBehaviour
     }
 
     void Monedas(){
-            Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-6), (valZ+4)));
+            Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-4), (valZ+4)));
             GameObject laMoneda = Instantiate(patronMoneda, position, Quaternion.identity) as GameObject;
     }
 
@@ -73,7 +74,7 @@ public class Movimiento : MonoBehaviour
     void Update()
     {
         float movVertical = Input.GetAxis("Horizontal");
-        Vector3 movimiento = new Vector3(1.6f, 0.0f, 4*(-movVertical));
+        Vector3 movimiento = new Vector3(avance, 0.0f, 4*(-movVertical));
         rb.AddForce(movimiento * velocidad);
         camara.transform.position = this.transform.position + offset;
 
@@ -88,7 +89,7 @@ public class Movimiento : MonoBehaviour
         }
 
         limite = valX - this.transform.position.x;          //diferencia entre ultima plataforma generada y posicion del jugador
-        if (limite < 40)
+        if (limite < 80)
         {
             Debug.Log("Nueva generacion de plataforma"); //temporal para saber que se generan nuevas plataformas
             SueloInicial();
@@ -98,14 +99,15 @@ public class Movimiento : MonoBehaviour
         if (transform.position.y < -2)
         {
             Debug.Log("Jugador ha muerto por caida");
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject); en vez de destruirlo lo quitamos de la vista
+            this.gameObject.SetActive(false);
             img.gameObject.SetActive(true);
             img.sprite = muerte;
             morir.Play();
 
         }
         if(aumentar){
-            velocidad++;
+            avance = avance + 0.2f;
             Debug.Log("Velocidad aumentada");
         }
         StartCoroutine(Esperar());
