@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class plataformas : MonoBehaviour
 {
     private SphereCollider jugador;
-    private int plat;
+    public int plat;
     public Text texto;
 
     // Start is called before the first frame update

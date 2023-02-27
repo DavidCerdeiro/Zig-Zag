@@ -24,6 +24,9 @@ public class Movimiento : MonoBehaviour
     private float valZ_suelo;
     private int nMonedas=0;
     public Text tMonedas;
+    public Button restart;
+    public Text recuento;
+    public plataformas plat;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +83,11 @@ public class Movimiento : MonoBehaviour
             img.gameObject.SetActive(true);
             img.sprite = muerte;
             morir.Play();
+            restart.gameObject.SetActive(true);
+            recuento.gameObject.SetActive(true);
+            recuento.text = plat.plat + " plataformas y " + nMonedas +" monedas";
+            plat.texto.gameObject.SetActive(false);
+            tMonedas.gameObject.SetActive(false);
         }
         if(other.gameObject.CompareTag("moneda")){
             nMonedas++;
@@ -119,7 +127,11 @@ public class Movimiento : MonoBehaviour
             img.gameObject.SetActive(true);
             img.sprite = muerte;
             morir.Play();
-
+            restart.gameObject.SetActive(true);
+            recuento.gameObject.SetActive(true);
+            recuento.text = plat.plat + " plataformas y " + nMonedas +" monedas";
+            plat.texto.gameObject.SetActive(false);
+            tMonedas.gameObject.SetActive(false);
         }
     }
 }
