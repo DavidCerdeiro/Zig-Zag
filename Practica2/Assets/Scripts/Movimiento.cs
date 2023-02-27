@@ -7,7 +7,7 @@ public class Movimiento : MonoBehaviour
 {
     public Image img;
     public Camera camara;
-    private int velocidad;
+    private float velocidad;
     private Vector3 offset;
     private float valZ;
     private float valX;
@@ -25,7 +25,7 @@ public class Movimiento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        velocidad = 2;
+        velocidad = 0.5f;
         offset = camara.transform.position;
         valX = 0.0f;
         valZ = 0.0f;
@@ -38,8 +38,14 @@ public class Movimiento : MonoBehaviour
     void SueloInicial(){
         
         for(int n = 0; n<20; n++){
-            Monedas();
-            Pincho();
+            if (n != 0) //para q no salga en el primer bloque aunq estaria mejor con la variable q lleva los bloques por los que has pasado
+            {
+                switch (Random.Range(0,2))
+                {
+                    case 0: Monedas(); break;
+                    case 1: Pincho(); break;
+                }
+            } 
             valX += 6.0f;
             Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-3.9f), (valZ+3.9f)));
             GameObject elsuelo = Instantiate(prefabSuelo, position, Quaternion.identity) as GameObject;
@@ -50,13 +56,19 @@ public class Movimiento : MonoBehaviour
         }
     }
     void Pincho(){
-            Vector3 position = new Vector3(valX_suelo, 0.09f, Random.Range((valZ_suelo-3f), (valZ_suelo+3f)));
-            GameObject elPincho = Instantiate(prefabPincho, position, Quaternion.identity) as GameObject;
+        Vector3 position = new Vector3(valX_suelo, 0.09f, Random.Range((valZ_suelo-3f), (valZ_suelo+3f)));
+        GameObject elPincho = Instantiate(prefabPincho, position, Quaternion.identity) as GameObject;
     }
 
     void Monedas(){
-            Vector3 position = new Vector3(valX_suelo, 0.0f, Random.Range((valZ_suelo-2f), (valZ_suelo+2f)));
-            GameObject laMoneda = Instantiate(patronMoneda, position, Quaternion.identity) as GameObject;
+        Vector3 position = new Vector3(valX_suelo, 0.0f, valZ_suelo);
+        switch (Random.Range(0,2))
+        {
+            case 0: GameObject laMoneda = Instantiate(patronMoneda, position, Quaternion.identity) as GameObject;
+                    break;
+            case 1: GameObject laMoneda2 = Instantiate(patronMoneda2, position, Quaternion.identity) as GameObject;
+                    break;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
