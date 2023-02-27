@@ -27,7 +27,7 @@ public class Movimiento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        velocidad = 0.5f;
+        velocidad = 1f;
         offset = camara.transform.position;
         valX = 0.0f;
         valZ = 0.0f;
@@ -91,7 +91,7 @@ public class Movimiento : MonoBehaviour
     void Update()
     {
         float movVertical = Input.GetAxis("Horizontal");
-        Vector3 movimiento = new Vector3(avance, 0.0f, 4*(-movVertical));
+        Vector3 movimiento = new Vector3(avance, 0.0f, 6*(-movVertical));
         rb.AddForce(movimiento * velocidad);
         camara.transform.position = this.transform.position + offset;
 
@@ -99,7 +99,7 @@ public class Movimiento : MonoBehaviour
         {
             if (this.transform.position.y > 0.59 && this.transform.position.y < 0.61)
             {
-                Vector3 salto = new Vector3(-19.2f, 50.0f, 0.0f);
+                Vector3 salto = new Vector3(-15.2f, 50.0f, 0.0f);
                 rb.AddForce(salto * 8);
             }
             
