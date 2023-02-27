@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 5378027580162944359}
   m_Layer: 0
   m_Name: moneda
-  m_TagString: Untagged
+  m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 5378027580168707747}
   m_Layer: 0
   m_Name: Monedas (2)
-  m_TagString: Untagged
+  m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 5378027580414753109}
   m_Layer: 0
   m_Name: moneda
-  m_TagString: Untagged
+  m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5339,7 +5339,7 @@ GameObject:
   - component: {fileID: 5378027581331825454}
   m_Layer: 0
   m_Name: Monedas
-  m_TagString: Untagged
+  m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5377,7 +5377,7 @@ GameObject:
   - component: {fileID: 5378027581372385996}
   m_Layer: 0
   m_Name: moneda
-  m_TagString: Untagged
+  m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5614,7 +5614,7 @@ GameObject:
   - component: {fileID: 5378027581696451538}
   m_Layer: 0
   m_Name: Monedas (1)
-  m_TagString: Untagged
+  m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

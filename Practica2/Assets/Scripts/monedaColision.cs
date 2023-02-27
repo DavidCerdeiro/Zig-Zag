@@ -8,10 +8,6 @@ public class monedaColision : MonoBehaviour
     public ParticleSystem particulas;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")){
@@ -22,10 +18,4 @@ public class monedaColision : MonoBehaviour
         };
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

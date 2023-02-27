@@ -22,6 +22,8 @@ public class Movimiento : MonoBehaviour
     private float avance;
     private float valX_suelo;
     private float valZ_suelo;
+    private int nMonedas=0;
+    public Text tMonedas;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +80,10 @@ public class Movimiento : MonoBehaviour
             img.gameObject.SetActive(true);
             img.sprite = muerte;
             morir.Play();
+        }
+        if(other.gameObject.CompareTag("moneda")){
+            nMonedas++;
+            tMonedas.text = "Monedas: " +nMonedas;
         }
 
     }

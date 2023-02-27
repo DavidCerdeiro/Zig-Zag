@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 660026279954942577}
   m_Layer: 0
   m_Name: moneda
-  m_TagString: Untagged
+  m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 660026280239274909}
   m_Layer: 0
   m_Name: Monedas
-  m_TagString: Untagged
+  m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
