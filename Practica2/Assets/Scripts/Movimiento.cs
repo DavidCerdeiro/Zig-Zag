@@ -32,7 +32,7 @@ public class Movimiento : MonoBehaviour
         //SueloInicial();
         limite = this.transform.position.x;
         rb = GetComponent<Rigidbody>();
-        avance = 1.6f;
+        avance = 1.4f;
     }
 
     void SueloInicial(){
@@ -45,6 +45,8 @@ public class Movimiento : MonoBehaviour
             GameObject elsuelo = Instantiate(prefabSuelo, position, Quaternion.identity) as GameObject;
             valX_suelo = elsuelo.transform.position.x;
             valZ_suelo = elsuelo.transform.position.z;
+            avance = avance + 0.05f;
+            Debug.Log("Se ha aumentado la velocidad");
         }
     }
     void Pincho(){
@@ -79,7 +81,7 @@ public class Movimiento : MonoBehaviour
         {
             if (this.transform.position.y > 0.59 && this.transform.position.y < 0.61)
             {
-                Vector3 salto = new Vector3(0.0f, 50.0f, 0.0f);
+                Vector3 salto = new Vector3(-19.2f, 50.0f, 0.0f);
                 rb.AddForce(salto * 8);
             }
             

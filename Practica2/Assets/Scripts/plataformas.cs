@@ -1,28 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class ScriptSuelo : MonoBehaviour
+public class plataformas : MonoBehaviour
 {
-
     private SphereCollider jugador;
-    private float i;
+    private int plat;
+    public Text texto;
 
     // Start is called before the first frame update
     void Start()
     {
         jugador = GameObject.FindWithTag("Player").GetComponent<SphereCollider>();
-        //jugador = GameObject.FindAnyObjectByType<SphereCollider>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        i = this.transform.position.x - jugador.transform.position.x;
-        if (i < -10)
-        {
-            Destroy(this.gameObject);
-            //Debug.Log("Se ha eliminado una plataforma");
-        }
+        plat = (int)(jugador.transform.position.x / 6);
+        texto.text = "Plataformas recorridas: " + plat;
     }
 }
