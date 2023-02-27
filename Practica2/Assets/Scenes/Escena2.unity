@@ -755,6 +755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pincho
       objectReference: {fileID: 0}
+    - target: {fileID: 5456818548929545698, guid: 3f90eb99c53360348843d43aa3dfd4a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6754555136090389005, guid: 3f90eb99c53360348843d43aa3dfd4a1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -811,6 +815,10 @@ PrefabInstance:
     - target: {fileID: 4961627624655887796, guid: 48ff6a16144922a4e8ec6b0b80ef938e, type: 3}
       propertyPath: m_Name
       value: patronMonedas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961627624655887796, guid: 48ff6a16144922a4e8ec6b0b80ef938e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7835520793133796543, guid: 48ff6a16144922a4e8ec6b0b80ef938e, type: 3}
       propertyPath: m_RootOrder

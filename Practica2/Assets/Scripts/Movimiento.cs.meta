@@ -3,7 +3,15 @@ guid: ce694e18db5864d43a70fddf3d98d53e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - img: {instanceID: 0}
+  - camara: {instanceID: 0}
+  - prefabSuelo: {fileID: 5988167376635836318, guid: a0f1cf8dac0d88d4e925154bb4a74b66, type: 3}
+  - prefabPincho: {fileID: 5456818548929545698, guid: 3f90eb99c53360348843d43aa3dfd4a1, type: 3}
+  - patronMoneda: {instanceID: 0}
+  - patronMoneda2: {instanceID: 0}
+  - muerte: {instanceID: 0}
+  - morir: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

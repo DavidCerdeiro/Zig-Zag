@@ -19,8 +19,9 @@ public class Movimiento : MonoBehaviour
     public GameObject patronMoneda2;
     public Sprite muerte;
     public AudioSource morir;
-    private bool aumentar;
     private float avance;
+    private float valX_suelo;
+    private float valZ_suelo;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +29,7 @@ public class Movimiento : MonoBehaviour
         offset = camara.transform.position;
         valX = 0.0f;
         valZ = 0.0f;
-        SueloInicial();
-        Pincho();
-        //Monedas();
+        //SueloInicial();
         limite = this.transform.position.x;
         rb = GetComponent<Rigidbody>();
         avance = 1.6f;
@@ -40,30 +39,28 @@ public class Movimiento : MonoBehaviour
         
         for(int n = 0; n<20; n++){
             Monedas();
+            Pincho();
             valX += 6.0f;
-            //valZ += 6.0f;
-            Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-4), (valZ+4)));
+            Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-3.9f), (valZ+3.9f)));
             GameObject elsuelo = Instantiate(prefabSuelo, position, Quaternion.identity) as GameObject;
+            valX_suelo = elsuelo.transform.position.x;
+            valZ_suelo = elsuelo.transform.position.z;
         }
     }
     void Pincho(){
-        for(int n = 0; n<10; n++){
-            //valX += 6.0f;
-            //valZ += 6.0f;
-            Vector3 position = new Vector3(valX, 0.09f, Random.Range((valZ-6), (valZ+4)));
+            Vector3 position = new Vector3(valX_suelo, 0.09f, Random.Range((valZ_suelo-3f), (valZ_suelo+3f)));
             GameObject elPincho = Instantiate(prefabPincho, position, Quaternion.identity) as GameObject;
-        }
     }
 
     void Monedas(){
-            Vector3 position = new Vector3(valX, 0.0f, Random.Range((valZ-4), (valZ+4)));
+            Vector3 position = new Vector3(valX_suelo, 0.0f, Random.Range((valZ_suelo-2f), (valZ_suelo+2f)));
             GameObject laMoneda = Instantiate(patronMoneda, position, Quaternion.identity) as GameObject;
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("pincho")){
             Debug.Log("Jugador ha muerto por pincho");
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
             img.gameObject.SetActive(true);
             img.sprite = muerte;
             morir.Play();
@@ -91,32 +88,18 @@ public class Movimiento : MonoBehaviour
         limite = valX - this.transform.position.x;          //diferencia entre ultima plataforma generada y posicion del jugador
         if (limite < 80)
         {
-            Debug.Log("Nueva generacion de plataforma"); //temporal para saber que se generan nuevas plataformas
             SueloInicial();
-            Pincho();
         }
 
         if (transform.position.y < -2)
         {
             Debug.Log("Jugador ha muerto por caida");
-            //Destroy(this.gameObject); en vez de destruirlo lo quitamos de la vista
+            //Destroy(gameObject); en vez de destruirlo lo quitamos de la vista
             this.gameObject.SetActive(false);
             img.gameObject.SetActive(true);
             img.sprite = muerte;
             morir.Play();
 
         }
-        if(aumentar){
-            avance = avance + 0.2f;
-            Debug.Log("Velocidad aumentada");
-        }
-        StartCoroutine(Esperar());
-        aumentar = false;
-    }
-    IEnumerator Esperar()
-    {
-        yield return new WaitForSeconds(5);
-        aumentar = true;
-
     }
 }

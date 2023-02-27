@@ -11,8 +11,8 @@ public class ScriptSuelo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //jugador = GameObject.FindWithTag("Player").GetComponent<GameObject>();
-        jugador = GameObject.FindAnyObjectByType<SphereCollider>();
+        jugador = GameObject.FindWithTag("Player").GetComponent<SphereCollider>();
+        //jugador = GameObject.FindAnyObjectByType<SphereCollider>();
     }
 
     // Update is called once per frame
