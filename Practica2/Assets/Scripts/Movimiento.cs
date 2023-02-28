@@ -82,6 +82,8 @@ public class Movimiento : MonoBehaviour
             this.gameObject.SetActive(false);
             img.gameObject.SetActive(true);
             img.sprite = muerte;
+            GameObject musica = GameObject.FindWithTag("Musica");
+            Destroy(musica);
             morir.Play();
             restart.gameObject.SetActive(true);
             recuento.gameObject.SetActive(true);
@@ -126,6 +128,8 @@ public class Movimiento : MonoBehaviour
             this.gameObject.SetActive(false);
             img.gameObject.SetActive(true);
             img.sprite = muerte;
+            GameObject musica = GameObject.FindWithTag("Musica");
+            Destroy(musica);
             morir.Play();
             restart.gameObject.SetActive(true);
             recuento.gameObject.SetActive(true);
